@@ -1,5 +1,14 @@
 export const blogCategoryOptions = [
-  { label: "Tech", value: "tech" },
-  { label: "Education", value: "education" },
-  { label: "Health", value: "health" },
+  "Tech",
+  "Education",
+  "Coding",
+  "DataScience",
+  "Health",
+  "Food",
+  "Lifestyle",
+  "Motivation",
+  "Edtech",
+  "Programming Language",
+  "Generative AI",
+  "Market",
 ];

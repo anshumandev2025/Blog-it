@@ -1,32 +1,36 @@
+import { convertDate } from "@/utils/convertDate";
 import { Avatar } from "@nextui-org/avatar";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-
-const BlogCard = () => {
+const BlogCard = ({
+  date,
+  id,
+  authorName,
+  authorImage,
+  views,
+  description,
+  category,
+}) => {
   return (
     <>
       <Card className="max-w-[340px] border-4 hover:border-[#EE2B69] border-black  drop-shadow-2xl">
         <CardHeader className="justify-between">
-          <div className="bg-[#FFE8F0] rounded-2xl p-2">20 May,2023</div>
+          <div className="bg-[#FFE8F0] rounded-2xl p-2">
+            {convertDate(date)}
+          </div>
           <div className="flex items-center gap-2">
             <img src="/svg/eye.svg" alt="eye" />
-            <p className="text-sm">232</p>
+            <p className="text-sm">{views}</p>
           </div>
         </CardHeader>
         <CardBody className="px-3 py-0 space-y-3 ">
           <div className="flex items-center justify-between">
-            <p>Steve Smith</p>
-            <Avatar
-              isBordered
-              radius="full"
-              size="md"
-              src="https://avatar.iran.liara.run/public/boy"
-            />
+            <p>{authorName}</p>
+            <Avatar isBordered radius="full" size="md" src={authorImage} />
           </div>
           <p className="text-sm">
-            A mobile app that helps users track and reduce their carbo and best
+            {description.split(" ").slice(0, 15).join(" ")}...
           </p>
           <Image
             alt="blog-image"
@@ -37,9 +41,9 @@ const BlogCard = () => {
           />
         </CardBody>
         <CardFooter className="w-full justify-between">
-          <div className="bg-[#FFE8F0] rounded-2xl p-2">Edtech</div>
+          <div className="bg-[#FFE8F0] rounded-2xl p-2">{category}</div>
           <Link
-            href={`detail/${1}`}
+            href={`detail/${id}`}
             className="px-3 py-2 bg-blue-500 text-white  rounded-xl"
           >
             Read More

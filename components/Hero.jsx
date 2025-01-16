@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 
-const Hero = ({ title, heading, description, search }) => {
+const Hero = ({ title, heading, description, search, query }) => {
   return (
     <div className="w-full space-y-5 bg-[#EE2B69] flex flex-col items-center justify-center p-10">
       {title && (
@@ -19,7 +19,7 @@ const Hero = ({ title, heading, description, search }) => {
           {description}
         </p>
       )}
-      {search && <SearchBar />}
+      {search && <SearchBar query={query} />}
     </div>
   );
 };

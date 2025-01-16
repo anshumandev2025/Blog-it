@@ -1,5 +1,5 @@
 import { Input } from "@nextui-org/input";
-
+import Form from "next/form";
 export const SearchIcon = ({
   size = 24,
   strokeWidth = 1.5,
@@ -35,22 +35,30 @@ export const SearchIcon = ({
     </svg>
   );
 };
-const SearchBar = () => {
+const SearchBar = ({ query }) => {
   return (
     <>
-      <Input
-        classNames={{
-          base: "w-full sm:max-w-[40rem] h-10",
-          mainWrapper: "h-full",
-          input: "text-small md:text-xl",
-          inputWrapper: "h-full font-normal text-black bg-white",
-        }}
-        placeholder="Type to search blog..."
-        size="lg"
-        variant="bordered"
-        startContent={<SearchIcon />}
-        type="search"
-      />
+      <Form
+        action="/"
+        scroll={false}
+        className="search-form flex items-center justify-center w-full"
+      >
+        <Input
+          name="query"
+          defaultValue={query}
+          classNames={{
+            base: "w-full sm:max-w-[40rem] h-10",
+            mainWrapper: "h-full",
+            input: "text-small md:text-xl",
+            inputWrapper: "h-full font-normal text-black bg-white",
+          }}
+          placeholder="Type to search blog..."
+          size="lg"
+          variant="bordered"
+          startContent={<SearchIcon />}
+          type="search"
+        />
+      </Form>
     </>
   );
 };

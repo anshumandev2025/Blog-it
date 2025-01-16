@@ -49,10 +49,10 @@ const Header = () => {
                 />
               </DropdownTrigger>
               <DropdownMenu>
-                <DropdownItem key="profile">
+                <DropdownItem textValue="profile" key="profile">
                   <Link href="/profile">Profile</Link>
                 </DropdownItem>
-                <DropdownItem key="create">
+                <DropdownItem textValue="create" key="create">
                   <Link href="/create">Create</Link>
                 </DropdownItem>
                 <DropdownItem
@@ -60,6 +60,7 @@ const Header = () => {
                     handleSignOut();
                     setUser(null);
                   }}
+                  textValue="logout"
                   className="text-danger"
                 >
                   Logout

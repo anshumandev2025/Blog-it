@@ -2,6 +2,8 @@ import { auth } from "@/auth";
 import BlogCard from "@/components/BlogCard";
 import Hero from "@/components/Hero";
 import ProfileCard from "@/components/ProfileCard";
+import { client } from "@/sanity/lib/client";
+import { FETCH_PERSONAL_BLOG_QUERY } from "@/sanity/lib/queries";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -10,6 +12,8 @@ const page = async () => {
   if (!session || !session?.user) {
     redirect("/");
   }
+  const blogs = await client.fetch(FETCH_PERSONAL_BLOG_QUERY);
+  console.log("blogs-->", blogs);
   return (
     <>
       <Hero
@@ -21,10 +25,18 @@ const page = async () => {
         <ProfileCard />
 
         <div className="flex  gap-10  flex-wrap">
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
+          {blogs?.map((blog, index) => (
+            <BlogCard
+              key={index}
+              date={blog?._createdAt}
+              id={blog?._id}
+              views={blog?.views}
+              authorName={blog?.author.name}
+              authorImage={blog?.author?.image}
+              description={blog?.description}
+              category={blog?.category}
+            />
+          ))}
         </div>
       </div>
     </>
