@@ -12,8 +12,8 @@ const page = async () => {
   if (!session || !session?.user) {
     redirect("/");
   }
+  console.log("session-->", session);
   const blogs = await client.fetch(FETCH_PERSONAL_BLOG_QUERY);
-  console.log("blogs-->", blogs);
   return (
     <>
       <Hero

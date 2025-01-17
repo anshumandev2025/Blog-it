@@ -17,7 +17,7 @@ export const FETCH_BLOG_QUERY =
 
 export const FETCH_BLOG_CONTENT_BY_ID_QUERY =
   defineQuery(`*[_type=="blog" && _id==$id][0]{
-  _id,
+    _id,
     title,
     description,
     category,
@@ -37,8 +37,8 @@ export const BLOG_VIEWS_QUERY = defineQuery(`
 `);
 
 export const FETCH_PERSONAL_BLOG_QUERY =
-  defineQuery(`*[_type=="blog" | order(_createdAt desc)]{
-  _id,
+  defineQuery(`*[_type=="blog" && defined(slug.current)] | order(_createdAt desc){
+    _id,
     title,
     description,
     category,
@@ -49,4 +49,13 @@ export const FETCH_PERSONAL_BLOG_QUERY =
     author->{
       name,email,image
     }
+}`);
+
+export const FETCH_AUTHOR_DETAILS_BY_EMAIL_QUERY =
+  defineQuery(`*[_type=="author" && email==$email][0]{
+    _id,
+    name,
+    image,
+    email,
+    image
 }`);

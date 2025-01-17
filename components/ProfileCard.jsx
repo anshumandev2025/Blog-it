@@ -4,7 +4,6 @@ import { Card, CardBody, CardHeader } from "@nextui-org/card";
 import React from "react";
 const ProfileCard = async () => {
   const session = await auth();
-  console.log("session-->", session);
   return (
     <>
       <Card className="max-w-[340px] w-fit h-fit py-5 relative border-4 bg-[#EE2B69] border-black  drop-shadow-2xl">
@@ -20,7 +19,7 @@ const ProfileCard = async () => {
               isBordered
               radius="full"
               size="md"
-              src={session?.user?.image}
+              src={"https://avatar.iran.liara.run/public/boy"}
             />
           </div>
           <h1 className="text-white text-xl text-center font-bold">
